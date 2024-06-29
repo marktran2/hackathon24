@@ -55,11 +55,13 @@ const AppProvider = ({ children }) => {
   }
 
   const [notification, setNotification] = useState(
-    localStorage.getItem("notification") === "true" 
+    localStorage.getItem("notification") !== "true" 
   );
 
+  const [ notiClick, setNotiClick ] = useState(false);
+
   return (
-    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories, notification, setNotification }}>
+    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories, notification, setNotification, notiClick, setNotiClick}}>
       {children}
     </AppContext.Provider>
   );
