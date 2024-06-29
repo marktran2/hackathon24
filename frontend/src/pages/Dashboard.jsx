@@ -92,6 +92,8 @@ const Dashboard = () => {
                 </p>
                 <div className="h-96 overflow-y-scroll border border-gray-800 border-opacity-25 rounded-xl p-6 mt-10">
                   <HabitList habits={habits} />
+                </div>
+                <div className="mt-auto flex justify-end py-2">
                   <HabitSettingButton/>
                 </div>
               </div>
