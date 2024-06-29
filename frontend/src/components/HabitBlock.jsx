@@ -1,13 +1,16 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from '../contexts/AppContext';
+import { CgGym } from "react-icons/cg";
+import { MdNoFood } from "react-icons/md";
 
-function HabitBlock({ habitId, displayString, streak, completed }) {
+function HabitBlock({ habitId, displayString, streak, category, completed }) {
   const [isCompleted, setIsCompleted] = useState(completed);
   const { updateCompleted } = useContext(AppContext);
 
   const toggleCompleted = () => {
     setIsCompleted(!isCompleted);
-    updateCompleted(habitId )
+    updateCompleted(habitId)
+    console.log(category)
   };
 
   return (
@@ -17,9 +20,13 @@ function HabitBlock({ habitId, displayString, streak, completed }) {
       }`}
       onClick={toggleCompleted}
     >
-      <h3 className="text-3xl">{displayString}</h3>
+      <h3 className="text-3xl flex items-center">
+        {displayString}
+        {category == 'diet' ? <CgGym className="ml-2" /> : ""}
+        {category == 'fitness' ? <MdNoFood className="ml-2" /> : ""}
+      </h3>
       <p className="text-gray-500">
-        {streak < 5 ? `${"💩".repeat(streak)}` : `${streak}x💩`}
+         {streak < 5 ? `${"💩".repeat(streak)}` : `${streak}x💩`}
       </p>
     </div>
   );
