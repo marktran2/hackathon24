@@ -20,7 +20,7 @@ const AppProvider = ({ children }) => {
 
   const [userCategories, setUserCategories] = useState(
     localStorage.getItem("userCategories")
-      ? parseInt(localStorage.getItem("userCategories"))
+      ? JSON.parse(localStorage.getItem("userCategories"))
       : []
   );
 
@@ -28,10 +28,10 @@ const AppProvider = ({ children }) => {
     var habitsList = JSON.parse(localStorage.getItem("habits")) ?? []
     habitsList.push(newHabit)
     localStorage.setItem('habits', JSON.stringify(habitsList))
-    setHabits([...habits, newHabit])
+    setHabits([...habits, newHabit]);
 
     // Add category to user's list if they don't have it yet
-    if (!userCategories.include(newHabit.category)) {
+    if (!userCategories.includes(newHabit.category)) {
       localStorage.setItem('userCategories', JSON.stringify([...userCategories, newHabit.category]))
       setUserCategories([...userCategories, newHabit.category]);
     }
@@ -55,7 +55,7 @@ const AppProvider = ({ children }) => {
   }
 
   return (
-    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted }}>
+    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories }}>
       {children}
     </AppContext.Provider>
   );

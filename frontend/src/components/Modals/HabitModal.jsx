@@ -1,10 +1,7 @@
 import { useState, useContext } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
-import HabitForm from '../HabitForm'
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { AppContext } from '../../contexts/AppContext';
-import CategorySelect from '../CategorySelect'
 
 const achievements = {
     "diet": [
@@ -65,7 +62,7 @@ export default function Example({ open, onClose }) {
   const { addHabit } = useContext(AppContext);
 
 
-  const [category, setCategory] = useState('');  
+  const [category, setCategory] = useState('diet');  
   const handleChange = (event) => {
     setCategory(event.target.value);
   };
