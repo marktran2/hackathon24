@@ -10,7 +10,7 @@ import Logo from "../assets/logo.png";
 import { classNames } from "../utils/cssHelpers";
 import { useContext, useState } from "react";
 import { AppContext } from "../contexts/AppContext";
-import Modal from "./Modal";
+import InfoModal from "./Modals/InfoModal";
 
 const Navbar = () => {
   const { currency } = useContext(AppContext);
@@ -104,10 +104,28 @@ const Navbar = () => {
           </>
         )}
       </Disclosure>
-      <Modal
+      <InfoModal
         open={currencyInfoModalOpen}
         onClose={() => setCurrencyInfoModalOpen(false)}
-      />
+        title="Our habit currency system"
+      >
+        <p className="text-lg text-gray-800">
+          🍂s can be unlocked by meeting unhealthy milestones! By failing to
+          complete your daily tasks you can work towards completing an
+          achievement, which will reward you with 🍂!
+        </p>
+        <br />
+        <p className="text-lg text-gray-800">
+          The more you complete your daily goals, the less 🍂 you will have! If
+          you keep it up, any existing 🍂s you have may eventually begin to fade
+          as well...
+        </p>
+        <br />
+        <p className="text-lg text-gray-800">
+          So whatever your goals are, best of luck in being the <s>un</s>
+          healthiest you can be!
+        </p>
+      </InfoModal>
     </>
   );
 };
