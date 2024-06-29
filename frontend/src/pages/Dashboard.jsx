@@ -10,7 +10,7 @@ const Dashboard = () => {
         <Navbar />
         <header className="bg-white shadow">
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
               {greetingTime()} 👋
             </h1>
           </div>
@@ -21,7 +21,11 @@ const Dashboard = () => {
           </div>
         </main>
         {/* TODO: add chatgpt quote here (positive quote) */}
-        <FooterQuote />
+        <FooterQuote
+          displayContent={
+            "Taking care of your body today is the best investment you can make for a brighter, happier tomorrow. Every healthy choice brings you closer to the vibrant life you deserve."
+          }
+        />
       </div>
     </>
   );
