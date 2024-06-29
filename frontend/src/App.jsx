@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import { Suspense } from "react";
 import LoadingPage from "./pages/LoadingPage";
+import AchievementsPage from "./pages/AchievementsPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,7 +18,7 @@ function App() {
       path: "/achievements",
       element: (
         <Suspense fallback={<LoadingPage />}>
-          <>hello</>
+          <AchievementsPage />
         </Suspense>
       ),
     },
