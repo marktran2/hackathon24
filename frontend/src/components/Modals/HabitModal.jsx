@@ -14,10 +14,16 @@ export default function Example({ open, onClose }) {
 
     if (inputValue.trim() !== '') {
       var object = JSON.parse(localStorage.getItem('habits'));
+      length = 0
+      if (object != null) {
+        length = object.length
+      }
+
       const newHabit = {
-        id: object.length,
+        id: length,
         displayString: inputValue,
-        streak: 5
+        streak: 5,
+        completed: false
       }
 
       addHabit(newHabit);
