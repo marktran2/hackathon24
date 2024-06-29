@@ -1,0 +1,70 @@
+{
+  "habits": [
+    {
+      "id": 1,
+      "displayString": "Exercise",
+      "streak": 5
+    },
+    {
+      "id": 2,
+      "displayString": "Meditate",
+      "streak": 3
+    },
+    {
+      "id": 3,
+      "displayString": "Read",
+      "streak": 2
+    },
+    {
+      "id": 4,
+      "displayString": "Drink Water",
+      "streak": 1
+    },
+    {
+      "id": 5,
+      "displayString": "Sleep",
+      "streak": 0
+    },
+    {
+      "id": 6,
+      "displayString": "Journal",
+      "streak": 1
+    },
+    {
+      "id": 7,
+      "displayString": "Wake up before 5am",
+      "streak": 10
+    }
+  ],
+
+  "user": {
+    "categories": [
+      "Diet", "Gym", "Screen Time"
+    ]
+  },
+
+  "failedHabits": {
+    "diet": 4,
+    "gym": 0,
+    "screenTime": 10
+  },
+
+  "achievements": {
+    "diet": [
+      {
+        "name": "Boba Breather",
+        "totalHabits": 5,
+        "imageUrl": "URL"
+      },
+      {
+        "name": "Sodium Sovereign",
+        "totalHabits": 10,
+        "imageUrl": "string"
+      }
+    ],
+
+    "fitness": [
+      
+    ]
+  }
+}
