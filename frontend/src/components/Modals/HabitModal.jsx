@@ -14,7 +14,6 @@ export default function Example({ open, onClose }) {
   };
 
   const handleAddGoal = () => {
-
     if (inputValue.trim() !== '') {
       var object = JSON.parse(localStorage.getItem('habits'));
       length = 0
