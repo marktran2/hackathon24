@@ -1,14 +1,71 @@
 import { useState, useContext } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
-import HabitForm from '../HabitForm'
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { AppContext } from '../../contexts/AppContext';
+
+const achievements = {
+    "diet": [
+      {
+        name: "Boba Breather",
+        imageUrl: "CouchPotateImg",
+        totalHabits: 10,
+      },
+      {
+        name: "Boba Sucker",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      }
+    ],
+
+    "fitness": [
+      {
+        name: "Old Year, Old Me!",
+        imageUrl: "string",
+        totalHabits: 25
+      }
+    ]
+  }
 
 export default function Example({ open, onClose }) {
 
   const [inputValue, setInputValue] = useState('');
   const { addHabit } = useContext(AppContext);
+
+
+  const [category, setCategory] = useState('diet');  
+  const handleChange = (event) => {
+    setCategory(event.target.value);
+  };
 
   const handleAddGoal = () => {
 
@@ -23,6 +80,7 @@ export default function Example({ open, onClose }) {
         id: length,
         displayString: inputValue,
         streak: 5,
+        category: category,
         completed: false
       }
 
@@ -60,21 +118,38 @@ export default function Example({ open, onClose }) {
                     </p>
 
                     <form>
-                        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-5">
-                          <div className="sm:col-span-1">
-                            <div className="mt-2">
-                              <input
-                                type="text"
-                                name="first-name"
-                                id="first-name"
-                                autoComplete="given-name"
-                                onChange = {(e) => setInputValue(e.target.value)}
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                              />
-                            </div>
+                      <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-5">
+                        <div className="sm:col-span-1">
+                          <div className="mt-2">
+                            <input
+                              type="text"
+                              name="first-name"
+                              id="first-name"
+                              autoComplete="given-name"
+                              onChange = {(e) => setInputValue(e.target.value)}
+                              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            />
+                          </div>
                         </div>
-                    </div>
-                  </form>
+                      </div>
+                      {/* Select below */}
+                      <div className="flex flex-col">
+                        <label htmlFor="example-select" className="text-sm font-medium text-gray-700">Select Category</label>
+                        <select
+                          id="select-achievement"
+                          name="select-achievement"
+                          value={category}
+                          onChange={handleChange}
+                          className="block w-full mt-1 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        >
+                          {Object.keys(achievements).map((category, index) => (
+                              <option key={index} value={`${category}`}>
+                                {category.charAt(0).toUpperCase() + category.slice(1)}
+                              </option>
+                            ))}
+                        </select>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>

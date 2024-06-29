@@ -1,10 +1,12 @@
-import React, { useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import CouchPotateImg from '../assets/potato.webp';
 import Navbar from "../components/Navbar";
 import AchievementCard from '../components/AchievementCard';
+import { AppContext } from '../contexts/AppContext';
 
 const AchievementsPage = () => {
   const [selectedButton, setSelectedButton] = useState(0);
+  const { userCategories } = useContext(AppContext);
 
   //////////////////////////////////////
   // Temporary variables, TODO: get rid off later with local storage
@@ -61,11 +63,6 @@ const AchievementsPage = () => {
     ]
   }
 
-  const user = {
-    categories: [
-      "diet", "gym", "screen-time"
-    ]
-  }
   //////////////////////////////////////
 
   const buttons = ['Tracking', 'All'];
@@ -77,7 +74,7 @@ const AchievementsPage = () => {
     const achievementCards = useMemo(
       () => {
         const displayCategories = (buttons[selectedButton] === 'Tracking') 
-        ? Object.keys(achievements).filter(category => user.categories.includes(category))
+        ? Object.keys(achievements).filter(category => userCategories.includes(category))
         : Object.keys(achievements);
 
         return displayCategories.map(category => (

@@ -3,12 +3,14 @@
     {
       "id": 1,
       "displayString": "Exercise",
-      "streak": 5
+      "streak": 5,
+      "category": "fitness"
     },
     {
       "id": 2,
       "displayString": "Meditate",
-      "streak": 3
+      "streak": 3,
+      "category": "spiritual health"
     },
     {
       "id": 3,
@@ -37,13 +39,11 @@
     }
   ],
 
-  "user": {
-    "categories": [
-      "Diet", "Gym", "Screen Time"
-    ]
-  },
+  "userCategories": [
+    "diet", "gym", "screen-time"
+  ],
 
-  "failedHabits": {
+  "failedHabitsCounter": {
     "diet": 4,
     "gym": 0,
     "screenTime": 10
