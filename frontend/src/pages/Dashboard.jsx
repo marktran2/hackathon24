@@ -4,45 +4,12 @@ import Navbar from "../components/Navbar";
 import { greetingTime } from "../utils/timeHelpers";
 import WavingAnimal from "../assets/Subject2.png";
 import WavingRabbit from "../assets/Subject3.png";
+import { useContext } from "react";
+import { AppContext } from "../contexts/AppContext";
 
 const Dashboard = () => {
-  const habits = [
-    {
-      id: 1,
-      displayString: "Exercise",
-      streak: 5,
-    },
-    {
-      id: 2,
-      displayString: "Meditate",
-      streak: 3,
-    },
-    {
-      id: 3,
-      displayString: "Read",
-      streak: 2,
-    },
-    {
-      id: 4,
-      displayString: "Drink Water",
-      streak: 1,
-    },
-    {
-      id: 5,
-      displayString: "Sleep",
-      streak: 0,
-    },
-    {
-      id: 6,
-      displayString: "Journal",
-      streak: 1,
-    },
-    {
-      id: 7,
-      displayString: "Wake up before 5am",
-      streak: 10,
-    },
-  ];
+  const { habits } = useContext(AppContext);
+
   return (
     <>
       <div className="h-screen w-screen bg-gray-100 overflow-hidden">
