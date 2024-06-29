@@ -8,7 +8,7 @@ const achievementsData = {
         name: "Boba Breather",
         imageUrl: CouchPotatoImg,
         totalHabits: 10,
-        quote: "",
+        quote: "Your body is fueled by bubble tea. Your blood now mostly consists of sugar, increasing the chance of type 2 diabetes but that is only a minor inconvenience for you",
       },
       {
         name: "Boba Sucker",
