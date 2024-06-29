@@ -8,6 +8,7 @@ function HabitList({ habits }) {
           key={habit.id}
           habitId={habit.id}
           displayString={habit.displayString}
+          category={habit.category}
           streak={habit.streak}
         />
       ))}

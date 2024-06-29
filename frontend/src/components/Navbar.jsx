@@ -11,6 +11,7 @@ import { classNames } from "../utils/cssHelpers";
 import { useContext, useState } from "react";
 import { AppContext } from "../contexts/AppContext";
 import InfoModal from "./Modals/InfoModal";
+import NotificationIcon from "./NotificationIcon";
 
 const Navbar = () => {
   const { currency } = useContext(AppContext);
@@ -77,6 +78,10 @@ const Navbar = () => {
                   >
                     {`🍂 ${currency}`}
                   </button>
+                </div>
+
+                <div className="pl-4 flex sm:static">
+                      <NotificationIcon/>
                 </div>
               </div>
             </div>

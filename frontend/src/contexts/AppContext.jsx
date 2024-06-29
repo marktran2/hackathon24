@@ -54,8 +54,12 @@ const AppProvider = ({ children }) => {
     setHabits(habitsList)
   }
 
+  const [notification, setNotification] = useState(
+    localStorage.getItem("notification") === "true" 
+  );
+
   return (
-    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories }}>
+    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories, notification, setNotification }}>
       {children}
     </AppContext.Provider>
   );
