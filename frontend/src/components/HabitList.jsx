@@ -10,6 +10,7 @@ function HabitList({ habits }) {
           displayString={habit.displayString}
           category={habit.category}
           streak={habit.streak}
+          completed = {habit.completed}
         />
       ))}
     </>

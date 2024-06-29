@@ -21,7 +21,7 @@ const AppProvider = ({ children }) => {
   const [userCategories, setUserCategories] = useState(
     localStorage.getItem("userCategories")
       ? JSON.parse(localStorage.getItem("userCategories"))
-      : []
+      : {}
   );
 
   const addHabit = (newHabit) => {
@@ -31,22 +31,31 @@ const AppProvider = ({ children }) => {
     setHabits([...habits, newHabit]);
 
     // Add category to user's list if they don't have it yet
-    if (!userCategories.includes(newHabit.category)) {
-      localStorage.setItem('userCategories', JSON.stringify([...userCategories, newHabit.category]))
-      setUserCategories([...userCategories, newHabit.category]);
+    if (!Object.keys(userCategories).includes(newHabit.category)) {
+      localStorage.setItem('userCategories', JSON.stringify({
+        ...userCategories,
+        [newHabit.category]: 0
+      }))
+      setUserCategories({
+        ...userCategories,
+        [newHabit.category]: 0
+      })
     }
   }
 
-  const updateCompleted = (habitId) => {
+  const updateCompleted = (habitId, status) => {
     var habitsList = JSON.parse(localStorage.getItem("habits"))
     var habit = habitsList[habitId]
-    if (habit.completed == false) {
-      habit.completed = true
+    if (status == 'success' && habit.completed != 'success') {
       habit.streak += 1
-    } else {
-      habit.completed = false
+    } else if (status == 'failed' && habit.completed != 'failed') {
       habit.streak -= 1
+      var userCategory = JSON.parse(localStorage.getItem("userCategories"))
+      userCategory[habit.category] += 1
+      localStorage.setItem('userCategories', JSON.stringify(userCategory))
     }
+
+    habit.completed = status
 
     habitsList[habitId] = habit
 
