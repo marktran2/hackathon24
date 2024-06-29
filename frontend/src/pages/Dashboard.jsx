@@ -6,6 +6,45 @@ import WavingAnimal from "../assets/Subject2.png";
 import WavingRabbit from "../assets/Subject3.png";
 import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
+import HabitSettingButton from "../components/HabitSettingButton";
+
+// localStorage.setItem("habits", JSON.stringify([
+//   {
+//     id: 1,
+//     displayString: "Exercise",
+//     streak: 5,
+//   },
+//   {
+//     id: 2,
+//     displayString: "Meditate",
+//     streak: 3,
+//   },
+//   {
+//     id: 3,
+//     displayString: "Read",
+//     streak: 2,
+//   },
+//   {
+//     id: 4,
+//     displayString: "Drink Water",
+//     streak: 1,
+//   },
+//   {
+//     id: 5,
+//     displayString: "Sleep",
+//     streak: 0,
+//   },
+//   {
+//     id: 6,
+//     displayString: "Journal",
+//     streak: 1,
+//   },
+//   {
+//     id: 7,
+//     displayString: "Wake up before 5am",
+//     streak: 10,
+//   },
+// ]));
 
 const Dashboard = () => {
   const { habits } = useContext(AppContext);
@@ -53,6 +92,7 @@ const Dashboard = () => {
                 </p>
                 <div className="h-96 overflow-y-scroll border border-gray-800 border-opacity-25 rounded-xl p-6 mt-10">
                   <HabitList habits={habits} />
+                  <HabitSettingButton/>
                 </div>
               </div>
             </div>
