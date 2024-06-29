@@ -16,6 +16,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
 a {
   font-weight: 500;
   color: #646cff;
