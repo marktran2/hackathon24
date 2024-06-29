@@ -79,13 +79,11 @@ const Navbar = () => {
                     {`🍂 ${currency}`}
                   </button>
                 </div>
-
                 <div className="pl-4 flex sm:static">
                       <NotificationIcon/>
                 </div>
               </div>
             </div>
-
             <DisclosurePanel className="sm:hidden">
               <div className="space-y-1 px-2 pb-3 pt-2">
                 {navigation.map((item) => (

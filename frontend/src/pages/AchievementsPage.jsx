@@ -19,7 +19,7 @@ const AchievementsPage = () => {
     const achievementCards = useMemo(
       () => {
         const displayCategories = (buttons[selectedButton] === 'Tracking') 
-        ? Object.keys(achievementsData).filter(category => userCategories.includes(category))
+        ? Object.keys(achievementsData).filter(category => Object.keys(userCategories).includes(category))
         : Object.keys(achievementsData);
 
         return displayCategories.map(category => (
