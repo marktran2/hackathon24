@@ -2,65 +2,11 @@ import { useState, useContext } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
 import { AppContext } from '../../contexts/AppContext';
-
-const achievements = {
-    "diet": [
-      {
-        name: "Boba Breather",
-        imageUrl: "CouchPotateImg",
-        totalHabits: 10,
-      },
-      {
-        name: "Boba Sucker",
-        imageUrl: "string",
-        totalHabits: 5,
-      },
-      {
-        name: "Boba Baller",
-        imageUrl: "string",
-        totalHabits: 5,
-      },
-      {
-        name: "Boba Baller",
-        imageUrl: "string",
-        totalHabits: 5,
-      },
-      {
-        name: "Boba Baller",
-        imageUrl: "string",
-        totalHabits: 5,
-      },
-      {
-        name: "Boba Baller",
-        imageUrl: "string",
-        totalHabits: 5,
-      },
-      {
-        name: "Boba Baller",
-        imageUrl: "string",
-        totalHabits: 5,
-      },
-      {
-        name: "Boba Baller",
-        imageUrl: "string",
-        totalHabits: 5,
-      }
-    ],
-
-    "fitness": [
-      {
-        name: "Old Year, Old Me!",
-        imageUrl: "string",
-        totalHabits: 25
-      }
-    ]
-  }
+import achievementsData from '../../utils/achievements';
 
 export default function Example({ open, onClose }) {
-
   const [inputValue, setInputValue] = useState('');
   const { addHabit } = useContext(AppContext);
-
 
   const [category, setCategory] = useState('diet');  
   const handleChange = (event) => {
@@ -142,7 +88,7 @@ export default function Example({ open, onClose }) {
                           onChange={handleChange}
                           className="block w-full mt-1 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         >
-                          {Object.keys(achievements).map((category, index) => (
+                          {Object.keys(achievementsData).map((category, index) => (
                               <option key={index} value={`${category}`}>
                                 {category.charAt(0).toUpperCase() + category.slice(1)}
                               </option>
