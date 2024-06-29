@@ -11,15 +11,11 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Logo from "../assets/logo.png";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import { classNames } from "../utils/cssHelpers";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  console.log(pathname);
   const navigation = [
     { name: "Dashboard", path: "/", current: pathname === "/" },
     {
