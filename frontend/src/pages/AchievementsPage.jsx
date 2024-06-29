@@ -1,15 +1,103 @@
-import React, { useState } from 'react';
-import FooterQuote from "../components/FooterQuote";
+import React, { useMemo, useState } from 'react';
+import CouchPotateImg from '../assets/potato.webp';
 import Navbar from "../components/Navbar";
+import AchievementCard from '../components/AchievementCard';
 
 const AchievementsPage = () => {
   const [selectedButton, setSelectedButton] = useState(0);
 
-  const buttons = ['Tracking', 'All', 'Not tracking?', 'Other filters...'];
+  //////////////////////////////////////
+  // Temporary variables, TODO: get rid off later with local storage
+  const achievements = {
+    "diet": [
+      {
+        name: "Boba Breather",
+        imageUrl: CouchPotateImg,
+        totalHabits: 10,
+      },
+      {
+        name: "Boba Sucker",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      },
+      {
+        name: "Boba Baller",
+        imageUrl: "string",
+        totalHabits: 5,
+      }
+    ],
+
+    "fitness": [
+      {
+        name: "Old Year, Old Me!",
+        imageUrl: "string",
+        totalHabits: 25
+      }
+    ]
+  }
+
+  const user = {
+    categories: [
+      "diet", "gym", "screen-time"
+    ]
+  }
+  //////////////////////////////////////
+
+  const buttons = ['Tracking', 'All'];
 
   const handleClick = (index) => {
     setSelectedButton(index);
   };
+
+    const achievementCards = useMemo(
+      () => {
+        const displayCategories = (buttons[selectedButton] === 'Tracking') 
+        ? Object.keys(achievements).filter(category => user.categories.includes(category))
+        : Object.keys(achievements);
+
+        return displayCategories.map(category => (
+          <div key={category}>
+            <h2 className="text-xl mx-auto max-w-7xl font-bold my-4">{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+            <div className="mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {achievements[category].map((element, index) => (
+                <AchievementCard
+                  key={`${element.name}-${index}`}
+                  name={element.name}
+                  image={element.imageUrl}
+                  totalHabits={element.totalHabits}
+                />
+              ))}
+            </div>
+          </div>
+        ))
+      },  
+      [selectedButton]
+    );
 
   return (
     <>
@@ -36,28 +124,8 @@ const AchievementsPage = () => {
           </div>
         </header>
         <main>
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <div className="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-              <img className="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0" src="/img/erin-lindford.jpg" alt="Woman's Face" />
-              <div className="text-center space-y-2 sm:text-left">
-                <div className="space-y-0.5">
-                  <p className="text-lg text-black font-semibold">
-                    Erin Lindford
-                  </p>
-                  <p className="text-slate-500 font-medium">
-                    Product Engineer
-                  </p>
-                </div>
-                <button className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">Message</button>
-              </div>
-            </div>
-          </div>
+          {achievementCards}
         </main>
-        <FooterQuote
-          displayContent={
-            "Taking care of your body today is the best investment you can make for a brighter, happier tomorrow. Every healthy choice brings you closer to the vibrant life you deserve."
-          }
-        />
       </div>
     </>
   );
