@@ -8,3 +8,16 @@ export function greetingTime() {
     return "Good Evening";
   }
 }
+
+export function dayHasPassedQuote() {
+  const lastGeneratedQuote = localStorage.getItem("quoteLastGenerated");
+  if (!lastGeneratedQuote) {
+    return true;
+  }
+  const lastGeneratedQuoteDate = new Date(lastGeneratedQuote);
+  const currentDate = new Date();
+  return (
+    currentDate.getTime() - lastGeneratedQuoteDate.getTime() >=
+    1000 * 60 * 60 * 24
+  );
+}

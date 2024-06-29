@@ -18,14 +18,16 @@ const AppProvider = ({ children }) => {
   );
 
   const addHabit = (newHabit) => {
-    var habitsList = JSON.parse(localStorage.getItem("habits"))
-    habitsList.push(newHabit)
-    localStorage.setItem('habits', JSON.stringify(habitsList))
-    setHabits([...habits, newHabit])
-  }
+    var habitsList = JSON.parse(localStorage.getItem("habits"));
+    habitsList.push(newHabit);
+    localStorage.setItem("habits", JSON.stringify(habitsList));
+    setHabits([...habits, newHabit]);
+  };
 
   return (
-    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit }}>
+    <AppContext.Provider
+      value={{ currency, setCurrency, habits, setHabits, addHabit }}
+    >
       {children}
     </AppContext.Provider>
   );

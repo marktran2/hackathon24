@@ -1,12 +1,13 @@
 // import FooterQuote from "../components/FooterQuote";
 import HabitList from "../components/HabitList";
 import Navbar from "../components/Navbar";
-import { greetingTime } from "../utils/timeHelpers";
+import { dayHasPassedQuote, greetingTime } from "../utils/timeHelpers";
 import WavingAnimal from "../assets/Subject2.png";
 import WavingRabbit from "../assets/Subject3.png";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../contexts/AppContext";
 import HabitSettingButton from "../components/HabitSettingButton";
+import { getAIQuote } from "../services/openAIService";
 
 // localStorage.setItem("habits", JSON.stringify([
 //   {
@@ -47,7 +48,29 @@ import HabitSettingButton from "../components/HabitSettingButton";
 // ]));
 
 const Dashboard = () => {
+  const [quote, setQuote] = useState(localStorage.getItem("quote") ?? "");
   const { habits } = useContext(AppContext);
+
+  const updateQuote = (quote) => {
+    localStorage.setItem("quote", quote);
+    localStorage.setItem("quoteLastGenerated", new Date().toUTCString());
+    setQuote(quote);
+  };
+
+  useEffect(() => {
+    if (!dayHasPassedQuote()) {
+      return;
+    }
+    const getQuote = async () => {
+      const quote = await getAIQuote();
+      updateQuote(quote.content);
+    };
+    getQuote();
+  }, []);
+  // localStorage.setItem(
+  //   "quoteLastGenerated",
+  //   new Date(new Date() - 1000 * 60 * 60 * 24).toUTCString()
+  // );
 
   return (
     <>
@@ -77,11 +100,7 @@ const Dashboard = () => {
                 </p>
                 <figure className="mt-10">
                   <blockquote className="text-center font-semibold">
-                    <p className="text-3xl opacity-60">
-                      {
-                        '"Taking care of your body today is the best investment you can make for a brighter, happier tomorrow. Every healthy choice brings you closer to the vibrant life you deserve."'
-                      }
-                    </p>
+                    <p className="text-3xl opacity-60">{quote}</p>
                   </blockquote>
                 </figure>
               </div>
@@ -94,7 +113,7 @@ const Dashboard = () => {
                   <HabitList habits={habits} />
                 </div>
                 <div className="mt-auto flex justify-end py-2">
-                  <HabitSettingButton/>
+                  <HabitSettingButton />
                 </div>
               </div>
             </div>
