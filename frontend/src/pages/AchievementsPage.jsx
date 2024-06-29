@@ -1,15 +1,93 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import CouchPotateImg from '../assets/potato.webp';
 import FooterQuote from "../components/FooterQuote";
 import Navbar from "../components/Navbar";
+import AchievementCard from '../components/AchievementCard';
 
 const AchievementsPage = () => {
   const [selectedButton, setSelectedButton] = useState(0);
+
+  const achievements = [ 
+    {
+      name: "Boba Breather",
+      imageUrl: CouchPotateImg,
+      completed: true,
+      totalHabits: 5,
+    },
+    {
+      name: "Boba Sucker",
+      imageUrl: "string",
+      completed: true,
+      totalHabits: 5,
+    },
+    {
+      name: "Boba Baller",
+      imageUrl: "string",
+      completed: true,
+      totalHabits: 5,
+    },
+    {
+      name: "Boba Baller",
+      imageUrl: "string",
+      completed: true,
+      totalHabits: 5,
+    },
+    {
+      name: "Boba Baller",
+      imageUrl: "string",
+      completed: true,
+      totalHabits: 5,
+    },
+    {
+      name: "Boba Baller",
+      imageUrl: "string",
+      completed: true,
+      totalHabits: 5,
+    },
+    {
+      name: "Boba Baller",
+      imageUrl: "string",
+      completed: true,
+      totalHabits: 5,
+    },
+    {
+      name: "Boba Baller",
+      imageUrl: "string",
+      completed: true,
+      totalHabits: 5,
+    },
+    {
+      name: "Boba Baller",
+      imageUrl: "string",
+      completed: true,
+      totalHabits: 5,
+    }
+  ]
 
   const buttons = ['Tracking', 'All', 'Not tracking?', 'Other filters...'];
 
   const handleClick = (index) => {
     setSelectedButton(index);
   };
+
+    const achievementCards = useMemo(
+      () =>
+        achievements.map((element) => {
+          return (
+            <AchievementCard
+              name={element.name}
+              image={element.imageUrl}
+              // key={presentation.id}
+              // title={presentation.name}
+              // description={presentation.description}
+              // thumbnail={presentation.thumbnail}
+              // numSlides={presentation.slides.length}
+              // presId={presentation.id}
+            />
+          );
+        }),
+      []
+    );
 
   return (
     <>
@@ -36,21 +114,8 @@ const AchievementsPage = () => {
           </div>
         </header>
         <main>
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <div className="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-              <img className="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0" src="/img/erin-lindford.jpg" alt="Woman's Face" />
-              <div className="text-center space-y-2 sm:text-left">
-                <div className="space-y-0.5">
-                  <p className="text-lg text-black font-semibold">
-                    Erin Lindford
-                  </p>
-                  <p className="text-slate-500 font-medium">
-                    Product Engineer
-                  </p>
-                </div>
-                <button className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">Message</button>
-              </div>
-            </div>
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {achievementCards}
           </div>
         </main>
         <FooterQuote
