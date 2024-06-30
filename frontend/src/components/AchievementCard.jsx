@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import ProgressBar from '../components/ProgressBar';
+import { AppContext } from '../contexts/AppContext';
 
 const AchievementCard = ({
   name,
@@ -8,6 +10,11 @@ const AchievementCard = ({
   openModal
 }) => {
   const isComplete = numCompleted >= totalHabits;
+  const { achieved, setAchieved } = useContext(AppContext);
+
+  if (!achieved.includes(name)) {
+    setAchieved([...achieved, name])   
+  }
 
   return (
     <div onClick={openModal} className="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 transition ease-in-out delay-150 hover:-translate-y-1 cursor-pointer">

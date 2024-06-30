@@ -24,6 +24,12 @@ const AppProvider = ({ children }) => {
       : {}
   );
 
+  const [achieved, setAchieved] = useState(
+    localStorage.getItem("achieved")
+      ? JSON.parse(localStorage.getItem("achieved"))
+      : []
+  );
+
   const addHabit = (newHabit) => {
     var habitsList = JSON.parse(localStorage.getItem("habits")) ?? []
     habitsList.push(newHabit)
@@ -73,14 +79,10 @@ const AppProvider = ({ children }) => {
     return sum;
   }
 
-  const [notification, setNotification] = useState(
-    localStorage.getItem("notification") !== "true" 
-  );
-
   const [ notiClick, setNotiClick ] = useState(false);
 
   return (
-    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories, calculateCurrency, notification, setNotification, notiClick, setNotiClick}}>
+    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories, calculateCurrency, notiClick, setNotiClick, achieved, setAchieved}}>
       {children}
     </AppContext.Provider>
   );
