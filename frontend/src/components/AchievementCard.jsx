@@ -3,11 +3,11 @@ import ProgressBar from '../components/ProgressBar';
 const AchievementCard = ({
   name,
   image,
+  numCompleted,
   totalHabits,
   openModal
 }) => {
-  const achievedGoals = 9;
-  const isComplete = achievedGoals > totalHabits;
+  const isComplete = numCompleted >= totalHabits;
 
   return (
     <div onClick={openModal} className="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 transition ease-in-out delay-150 hover:-translate-y-1 cursor-pointer">
@@ -21,7 +21,7 @@ const AchievementCard = ({
               <p className="text-slate-500 font-medium">
                 {"Complete!"}
               </p> :
-              <ProgressBar achievedGoals={achievedGoals} totalGoals={totalHabits} />
+              <ProgressBar achievedGoals={numCompleted} totalGoals={totalHabits} />
             }
         </div>
       </div>

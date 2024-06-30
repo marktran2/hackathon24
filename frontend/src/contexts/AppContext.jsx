@@ -53,6 +53,7 @@ const AppProvider = ({ children }) => {
       var userCategory = JSON.parse(localStorage.getItem("userCategories"))
       userCategory[habit.category] += 1
       localStorage.setItem('userCategories', JSON.stringify(userCategory))
+      setUserCategories({...userCategory})
     }
 
     habit.completed = status
@@ -63,6 +64,15 @@ const AppProvider = ({ children }) => {
     setHabits(habitsList)
   }
 
+  const calculateCurrency = () => {
+    let sum = 0;
+    for (const [category, count] of Object.entries(userCategories)) {
+      sum += count;
+    }
+
+    return sum;
+  }
+
   const [notification, setNotification] = useState(
     localStorage.getItem("notification") !== "true" 
   );
@@ -70,7 +80,7 @@ const AppProvider = ({ children }) => {
   const [ notiClick, setNotiClick ] = useState(false);
 
   return (
-    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories, notification, setNotification, notiClick, setNotiClick}}>
+    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories, calculateCurrency, notification, setNotification, notiClick, setNotiClick}}>
       {children}
     </AppContext.Provider>
   );

@@ -30,6 +30,7 @@ const AchievementsPage = () => {
                   key={`${element.name}-${index}`}
                   name={element.name}
                   image={element.imageUrl}
+                  numCompleted={(userCategories[category]) ? userCategories[category] : 0}
                   totalHabits={element.totalHabits}
                   quote={element.quote}
                 />
@@ -38,7 +39,7 @@ const AchievementsPage = () => {
           </div>
         ))
       },  
-      [selectedButton]
+      [selectedButton, userCategories]
     );
 
   return (
@@ -48,7 +49,7 @@ const AchievementsPage = () => {
         <header className="bg-white shadow">
           <div className="flex flex-col space-y-6 mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              {"Achievements"} 🏆
+              {"Achievements"} 
             </h1>
             <div className="inline-flex">
               {buttons.map((button, index) => (
@@ -73,7 +74,7 @@ const AchievementsPage = () => {
   );
 };
 
-const AchievementCardWithModal = ({ name, image, totalHabits, quote }) => {
+const AchievementCardWithModal = ({ name, image, totalHabits, quote, numCompleted }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -82,7 +83,10 @@ const AchievementCardWithModal = ({ name, image, totalHabits, quote }) => {
         name={name}
         image={image}
         totalHabits={totalHabits}
-        openModal={() => setShowModal(true)}
+        numCompleted={numCompleted}
+        openModal={() => { if (numCompleted >= totalHabits) {
+          setShowModal(true);
+        }}}
       />
       <AchievementModal
         name={name}

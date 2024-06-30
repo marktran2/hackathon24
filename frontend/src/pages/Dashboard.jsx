@@ -86,7 +86,7 @@ const Dashboard = () => {
                 </figure>
               </div>
               <div className="w-[50%]">
-                <h2 className="text-2xl font-semibold">Your Goals</h2>
+                <h2 className="text-2xl font-semibold">Your Tracked Habits</h2>
                 <p className="text-gray-500">
                   {"Here's what you're working towards."}
                 </p>
