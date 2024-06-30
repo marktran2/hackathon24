@@ -12,10 +12,9 @@ function NotificationIcon() {
     // hard coding notifications for now
     let notifs = [{name: "hi", quote: "nah id nah id", image: CouchPotatoImg}, {name: "Boba Breather", quote: "deez nuts", image: BobaImg}];
 
-
-    return notification ? 
+    return notification ?
     <>
-    <span className="material-symbols-outlined cursor-pointer"
+    <span className="material-symbols-outlined cursor-pointer text-white"
     onClick={()=>setNotiClick(true)}
     >
         notifications_unread
@@ -32,6 +31,5 @@ function NotificationIcon() {
         notifications
     </span>;
   }
-  
   export default NotificationIcon;
   
