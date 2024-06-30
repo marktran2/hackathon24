@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { AppContext } from '../contexts/AppContext';
 import { CgGym } from "react-icons/cg";
 import { MdNoFood } from "react-icons/md";
+import { FaSmokingBan } from "react-icons/fa";
+import { IoPhonePortraitOutline } from "react-icons/io5";
 
 function HabitBlock({ habitId, displayString, streak, category, completed}) {
   const [dynamicCompleted, setDynamicCompleted] = useState(completed);
@@ -26,6 +28,8 @@ function HabitBlock({ habitId, displayString, streak, category, completed}) {
         {displayString}
         {category == 'fitness' ? <CgGym className="ml-2" /> : ""}
         {category == 'diet' ? <MdNoFood className="ml-2" /> : ""}
+        {category == 'smoking' ? <FaSmokingBan className="ml-2" /> : ""}
+        {category == 'screentime' ? <IoPhonePortraitOutline className="ml-2" /> : ""}
       </h3>
       <p className="text-gray-500">
          {streak < 5 ? `${"💩".repeat(streak)}` : `${streak}x💩`}
