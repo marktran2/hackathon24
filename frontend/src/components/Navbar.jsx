@@ -14,7 +14,7 @@ import InfoModal from "./Modals/InfoModal";
 import NotificationIcon from "./NotificationIcon";
 
 const Navbar = () => {
-  const { currency, calculateCurrency } = useContext(AppContext);
+  const { calculateCurrency } = useContext(AppContext);
   const [currencyInfoModalOpen, setCurrencyInfoModalOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -80,7 +80,7 @@ const Navbar = () => {
                   </button>
                 </div>
                 <div className="pl-4 flex sm:static">
-                      <NotificationIcon/>
+                  <NotificationIcon />
                 </div>
               </div>
             </div>
@@ -113,14 +113,14 @@ const Navbar = () => {
         title="Our habit currency system"
       >
         <p className="text-lg text-gray-800">
-          🍂s can be unlocked by meeting unhealthy milestones! By failing to
+          💩s can be unlocked by meeting unhealthy milestones! By failing to
           complete your daily tasks you can work towards completing an
-          achievement, which will reward you with 🍂!
+          achievement, which will reward you with 💩!
         </p>
         <br />
         <p className="text-lg text-gray-800">
-          The more you complete your daily goals, the less 🍂 you will have! If
-          you keep it up, any existing 🍂s you have may eventually begin to fade
+          The more you complete your daily goals, the less 💩 you will have! If
+          you keep it up, any existing 💩s you have may eventually begin to fade
           as well...
         </p>
         <br />

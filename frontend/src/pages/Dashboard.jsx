@@ -57,6 +57,10 @@ const Dashboard = () => {
     setQuote(quote);
   };
 
+  localStorage.setItem(
+    "quoteLastGenerated",
+    new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 3).toUTCString()
+  );
   useEffect(() => {
     if (!dayHasPassedQuote()) {
       return;

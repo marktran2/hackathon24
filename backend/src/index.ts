@@ -16,6 +16,7 @@ const openai = new OpenAI({
 });
 
 app.get("/sarcasm/v1", async (req: Request, res: Response) => {
+  const prompt = req.query.prompt;
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [
@@ -26,7 +27,7 @@ app.get("/sarcasm/v1", async (req: Request, res: Response) => {
       },
       {
         role: "user",
-        content: "I failed to go to the gym today. I feel like a failure.",
+        content: `I failed to go stick to my habit. I feel like a ${prompt}. Tell me something sarcastic in under 20 words that's lowkey mean but don't insult me too much. Just motivate me because I feel so hopeless.`,
       },
     ],
   });
