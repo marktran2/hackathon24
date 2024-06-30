@@ -76,7 +76,7 @@ const Navbar = () => {
                     className="w-24 rounded-md px-3 py-2 font-medium text-xl"
                     onClick={() => setCurrencyInfoModalOpen(true)}
                   >
-                    {`🍂 ${calculateCurrency()}`}
+                    {`💩 ${calculateCurrency()}`}
                   </button>
                 </div>
                 <div className="pl-4 flex sm:static">

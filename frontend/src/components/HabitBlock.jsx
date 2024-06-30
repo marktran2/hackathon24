@@ -8,9 +8,8 @@ function HabitBlock({ habitId, displayString, streak, category, completed}) {
   const { updateCompleted } = useContext(AppContext);
 
   const toggleCompleted = (status) => {
+    if (dynamicCompleted !== 'attempting') return;
     setDynamicCompleted(status)
-    // console.log(status)
-    // console.log(dynamicCompleted)
     updateCompleted(habitId, status)
   };
 
@@ -28,7 +27,7 @@ function HabitBlock({ habitId, displayString, streak, category, completed}) {
         {category == 'diet' ? <MdNoFood className="ml-2" /> : ""}
       </h3>
       <p className="text-gray-500">
-         {streak < 5 ? `${"💩".repeat(streak)}` : `${streak}x💩`}
+         {streak < 5 ? `${"🌟".repeat(streak)}` : `${streak}x🌟`}
          <button
           className="ml-3 bg-red-500 text-white px-3 py-1 rounded"
           onClick={(e) => {
