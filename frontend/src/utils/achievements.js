@@ -46,7 +46,7 @@ const achievementsData = {
       {
         name: "Old Year, Old Me!",
         imageUrl: "string",
-        totalHabits: 25,
+        totalHabits: 5,
         quote: "New Year's resolutions are great! ...while the year is still new at least. Now that the newness has worn off, so has your interest. Onto the next trend!"
       },
       {

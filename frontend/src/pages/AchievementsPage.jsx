@@ -30,6 +30,7 @@ const AchievementsPage = () => {
                   key={`${element.name}-${index}`}
                   name={element.name}
                   image={element.imageUrl}
+                  numCompleted={(userCategories[category]) ? userCategories[category] : 0}
                   totalHabits={element.totalHabits}
                   quote={element.quote}
                 />
@@ -38,7 +39,7 @@ const AchievementsPage = () => {
           </div>
         ))
       },  
-      [selectedButton]
+      [selectedButton, userCategories]
     );
 
   return (
@@ -73,7 +74,7 @@ const AchievementsPage = () => {
   );
 };
 
-const AchievementCardWithModal = ({ name, image, totalHabits, quote }) => {
+const AchievementCardWithModal = ({ name, image, totalHabits, quote, numCompleted }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -82,7 +83,10 @@ const AchievementCardWithModal = ({ name, image, totalHabits, quote }) => {
         name={name}
         image={image}
         totalHabits={totalHabits}
-        openModal={() => setShowModal(true)}
+        numCompleted={numCompleted}
+        openModal={() => { if (numCompleted >= totalHabits) {
+          setShowModal(true);
+        }}}
       />
       <AchievementModal
         name={name}

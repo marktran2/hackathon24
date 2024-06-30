@@ -53,6 +53,7 @@ const AppProvider = ({ children }) => {
       var userCategory = JSON.parse(localStorage.getItem("userCategories"))
       userCategory[habit.category] += 1
       localStorage.setItem('userCategories', JSON.stringify(userCategory))
+      setUserCategories({...userCategory})
     }
 
     habit.completed = status
