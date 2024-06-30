@@ -17,7 +17,7 @@ const AchievementCard = ({
           <p className="text-lg text-black font-semibold">
             {name}
           </p>
-            {isComplete ? 
+            {isComplete ?
               <p className="text-slate-500 font-medium">
                 {"Complete!"}
               </p> :

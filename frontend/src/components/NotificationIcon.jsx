@@ -26,7 +26,7 @@ function NotificationIcon() {
     quote={notifs[1].quote}
     image={notifs[1].image}>
     </NewAchievmntMod>
-    </> 
+    </>
     : <span className="material-symbols-outlined cursor-pointer"
     onClick={setNotification(true)}>
         notifications
