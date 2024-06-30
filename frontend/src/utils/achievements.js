@@ -1,4 +1,3 @@
-import CouchPotatoImg from '../assets/potato.webp';
 import McDonaldImg from '../assets/McDonald.png'
 import saltImg from '../assets/salt.webp'
 import waterImg from '../assets/water.jpg'
@@ -14,6 +13,7 @@ import oldManImg from '../assets/oldman.webp'
 import diseaseImg from '../assets/disease.jpg'
 import tiredImg from '../assets/running.png'
 import topTenImg from '../assets/topten.jpg'
+import bobaImg from '../assets/boba.jpeg'
 
 // List of achievements, sorted by their categories
 // SHOULD NOT CHANGE DATA DURING RUNTIME
@@ -21,7 +21,7 @@ const achievementsData = {
     "diet": [
       {
         name: "Boba Breather",
-        imageUrl: CouchPotatoImg,
+        imageUrl: bobaImg,
         totalHabits: 10,
         quote: "Your body is fueled by bubble tea. Your blood now mostly consists of sugar, increasing the chance of type 2 diabetes but that is only a minor inconvenience for you",
       },
@@ -67,7 +67,7 @@ const achievementsData = {
       {
         name: "Fitness Philanthropist",
         imageUrl: gymImg,
-        totalHabits: 25,
+        totalHabits: 10,
         quote: "You are passionate about exercise! Just not passionate about exercising yourself... Congratulations on becoming your local gym's top donor!"
       },
       {

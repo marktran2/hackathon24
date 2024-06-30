@@ -14,6 +14,7 @@ const AchievementCard = ({
 
   if (!achieved.includes(name)) {
     setAchieved([...achieved, name])   
+    localStorage.setItem('achieved', JSON.stringify([...achieved, name]))
   }
 
   return (

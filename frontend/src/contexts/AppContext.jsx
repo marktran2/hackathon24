@@ -79,10 +79,12 @@ const AppProvider = ({ children }) => {
     return sum;
   }
 
+  const [notification, setNotification] = useState(true);
+
   const [ notiClick, setNotiClick ] = useState(false);
 
   return (
-    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories, calculateCurrency, notiClick, setNotiClick, achieved, setAchieved}}>
+    <AppContext.Provider value={{ currency, setCurrency, habits, setHabits, addHabit, updateCompleted, userCategories, calculateCurrency, notification, setNotification, notiClick, setNotiClick, achieved, setAchieved}}>
       {children}
     </AppContext.Provider>
   );
