@@ -14,7 +14,7 @@ import InfoModal from "./Modals/InfoModal";
 import NotificationIcon from "./NotificationIcon";
 
 const Navbar = () => {
-  const { currency } = useContext(AppContext);
+  const { currency, calculateCurrency } = useContext(AppContext);
   const [currencyInfoModalOpen, setCurrencyInfoModalOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -76,16 +76,14 @@ const Navbar = () => {
                     className="w-24 rounded-md px-3 py-2 font-medium text-xl"
                     onClick={() => setCurrencyInfoModalOpen(true)}
                   >
-                    {`🍂 ${currency}`}
+                    {`💩 ${calculateCurrency()}`}
                   </button>
                 </div>
-
                 <div className="pl-4 flex sm:static">
                       <NotificationIcon/>
                 </div>
               </div>
             </div>
-
             <DisclosurePanel className="sm:hidden">
               <div className="space-y-1 px-2 pb-3 pt-2">
                 {navigation.map((item) => (

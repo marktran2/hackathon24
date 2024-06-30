@@ -14,7 +14,6 @@ export default function Example({ open, onClose }) {
   };
 
   const handleAddGoal = () => {
-
     if (inputValue.trim() !== '') {
       var object = JSON.parse(localStorage.getItem('habits'));
       length = 0
@@ -25,9 +24,9 @@ export default function Example({ open, onClose }) {
       const newHabit = {
         id: length,
         displayString: inputValue,
-        streak: 5,
+        streak: 2,
         category: category,
-        completed: false
+        completed: 'attempting'
       }
 
       addHabit(newHabit);
